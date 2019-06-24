@@ -1,0 +1,16 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: pink;
+	color: #FAFAFA;
+}
+
+a {
+	margin-top: 1rem;
+	font: 500 1.2rem monospace;
+	color: purple;
+	text-decoration: none;
+	cursor: pointer;
+}

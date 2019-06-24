@@ -1,0 +1,23 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background:	#FF6347;
+	font: 500 2rem sans-serif;
+	color: 	#000080;
+}
+
+button {
+	padding: .5rem;
+	border: 0;
+	color: #fff;
+	background:	#DC143C;
+	outline: none;
+	margin: 5px 0;
+}
+
+#cronometro {
+	font: 500 3rem sans-serif;
+	color:	#000080;
+}
