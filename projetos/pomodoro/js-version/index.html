@@ -3,16 +3,33 @@
 <head>
   <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
-  <title>Pomodoro</title>
+  <title>Desafio do Pomodoro</title>
 </head>
 
 <body>
-	<h1>Pomodoro</h1>
-	<button onclick="rodar()">Iniciar</button>
-	<p id="cronometro">00:00</p>
-	<p id="mensagem"></p>
-	<button onclick="parar()">parar</button>
-	<button onclick="reset()">reset</button>
+	<section class="container" id="container">
+		<h1 id="messagem">Pomodoro timer :)</h1>
+		<div class="box">
+			<input id="cronometro" value="25:00"></input>
+			<div class="buttonWrapper">
+				<button onClick="changeType('pomodoro')">
+					Novo pomodoro
+				</button>
+				<button onClick="changeType('intervalo')">
+					Novo intervalo
+				</button>
+			</div>
+			<div class="buttonWrapper">
+				<button onClick="startPomodoro()">
+					Iniciar
+				</button>
+				<button onClick="pausePomodoro()">
+					Pausar
+				</button>
+			</div>
+			</div>
+		</div>
+	</section>
 	<script src='./scripts.js'></script>
 </body>
 </html>
