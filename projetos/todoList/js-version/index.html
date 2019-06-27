@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+  	<title>TODO</title>
+	</head>
+	<body>
+		<section class="container">
+			<h1>ToDo List</h1>
+			<div class="header">
+				<label>Adicione uma nova tarefa:</label>
+				<div class="box">
+					<input type="text" id="task-input">
+					<button class="addButton" onClick="addTask()">Add</button>
+				</div>
+			</div>
+
+			<div class="todo-list">
+				<ul>
+					<li><input type="checkbox"><label>Beber água</lable></li>
+				</ul>
+				<div class="finish-items">
+					<ul>
+						<li class="finished-example">Comprar arroz<button class="delete">Deletar</button></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<script src='./scripts.js'></script>
+	</body>
+</html>
