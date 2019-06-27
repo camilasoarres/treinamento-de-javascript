@@ -5,12 +5,12 @@ let todoCompletedList =  document.querySelector('.finish-items ul');
 function createNewTask(task) {
   let listItem = document.createElement('li');
   let checkBox = document.createElement('input');
-  let label = document.createElement('label');
+  let labelItem = document.createElement('label');
 
-  label.innerText = task;
+  labelItem.innerText = task;
   checkBox.type = 'checkbox';
   listItem.appendChild(checkBox);
-  listItem.appendChild(label);
+  listItem.appendChild(labelItem);
 
   return listItem;  
 };
