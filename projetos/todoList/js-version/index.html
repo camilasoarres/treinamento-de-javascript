@@ -10,14 +10,20 @@
 			<div class="header">
 				<label>Adicione uma nova tarefa:</label>
 				<div class="box">
-					<input type="text" id="task-input">
+					<input type="text" id="task-input" required>
+					<label>Descrição</label>
+					<input type="text" id="description-input">
+					<label>Categoria</label>
+					<input type="text" id="category-input">
+					<label>Color</label>
+					<input type="color" value="#800000" id="color-input">
 					<button class="addButton" onClick="addTask()">Add</button>
 				</div>
 			</div>
 
 			<div class="todo-list">
 				<ul>
-					<li><input type="checkbox"><label>Beber água</lable></li>
+					<li><input type="checkbox"><label>Beber água </lable><label>- Hidratação</lable><p>Encher a garrafinha</p></li>
 				</ul>
 				<div class="finish-items">
 					<ul>

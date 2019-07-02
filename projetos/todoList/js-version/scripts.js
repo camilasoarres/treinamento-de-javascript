@@ -1,28 +1,40 @@
 let taskInput = document.querySelector('#task-input');
 let todoPrincipalList = document.querySelector('.todo-list ul');
 let todoCompletedList =  document.querySelector('.finish-items ul');
+let descriptionInput = document.querySelector('#description-input');
+let categoryInput = document.querySelector('#category-input');
+let colorInput = document.querySelector('#color-input');
 
-function createNewTask(task) {
+function createNewTask(task, description, category, color) {
   let listItem = document.createElement('li');
   let checkBox = document.createElement('input');
   let labelItem = document.createElement('label');
+  let categoryItem = document.createElement('p');
 
-  labelItem.innerText = task;
+  labelItem.innerText = task + ' - ' + category;
+  categoryItem.innerText = description;
   checkBox.type = 'checkbox';
   listItem.appendChild(checkBox);
   listItem.appendChild(labelItem);
+  listItem.appendChild(categoryItem);
 
-  return listItem;  
+  listItem.style.backgroundColor = color;
+  console.log(color);
+
+  return listItem;
 };
 
 function addTask() {
-  let listItem = createNewTask(taskInput.value);
+  let listItem = createNewTask(taskInput.value, descriptionInput.value, categoryInput.value, colorInput.value);
 
   if (taskInput.value !== '') {
     todoPrincipalList.appendChild(listItem); 
-    taskInput.value= '';
+    taskInput.value = '';
+    descriptionInput.value = '';
+    categoryInput.value = '';
+    colorInput.value = '#CECECE';
   }
-  
+
   principalTodoItems(listItem, finishTask);
 };
 
