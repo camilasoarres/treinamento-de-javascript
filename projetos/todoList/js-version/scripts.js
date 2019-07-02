@@ -19,7 +19,6 @@ function createNewTask(task, description, category, color) {
   listItem.appendChild(categoryItem);
 
   listItem.style.backgroundColor = color;
-  console.log(color);
 
   return listItem;
 };
@@ -32,7 +31,7 @@ function addTask() {
     taskInput.value = '';
     descriptionInput.value = '';
     categoryInput.value = '';
-    colorInput.value = '#CECECE';
+    colorInput.value = '#800000';
   }
 
   principalTodoItems(listItem, finishTask);
@@ -57,7 +56,7 @@ function finishTask() {
 function deleteTask() {
   let listItem = this.parentNode;
   let ul = listItem.parentNode;
-  
+
   ul.removeChild(listItem);
 };
 
