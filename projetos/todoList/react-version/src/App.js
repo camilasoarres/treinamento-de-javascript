@@ -5,64 +5,47 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [
-        {id: 0, task: 'Beber água'},
-      ],
-      nextId: 1,
-      value: '',
+      title: '',
+      description: '',
+      category: '',
+      color: '#800000',
+      tasks: [],
+      check: false
     };
   }
 
-  addTodo = (todoTask) => {
-    const { tasks, nextId, value } = this.state;
-    let taskItem = tasks.slice();
-
-    if (value !== '') {
-      taskItem.push({
-        id: nextId,
-        task: todoTask
-      });
-    }
-  
-    this.setState({
-      tasks: taskItem,
-      nextId: nextId + 1,
-      value: '',
-    });
-  }
-
-  removeTodo = (id) => {
-    const { tasks } = this.state;
-
-    this.setState({
-      tasks: tasks.filter((todo) => todo.id !== id),
-    });
-  }
-
   handleChange = (ev) => {
+    const value = ev.target.name;
     this.setState({
-      value: ev.target.value,
+      [value]: ev.target.value,
     });
   }
 
-  handleKeyUp = (event) => {
-		if (event.key === 'Enter') {
-			this.addTodo(this.state.value);
-		}
-  }
-  
   renderMap = () => {
     const { tasks } = this.state;
 
     return (
-      tasks.map((todo) => {
+      tasks.map((task, index) => {
         return (
-          <li key={todo.id}>
-            <label todo={todo}>
-              {todo.task}
+          <li style={{ backgroundColor: task.color }}
+            key={index}>
+            <label>
+              <p>{task.title}</p>
+              <p>{task.description}</p>
+              <p>{task.category}</p>
+              <p>{task.color}</p>
             </label>
             <div>
-              <button onClick={()=> this.removeTodo(todo.id)} className='delete'>Deletar</button>
+              {!this.state.check && (
+                <div>
+                  <button onClick={() => this.handleEdit(task, index)}>edit</button>
+                  <button onClick={() => this.deleteTask(task)}>delete</button>
+                </div>
+              )}
+              
+              <button onClick={() => this.handleCheck(index)}>
+                {task.check ? "concluído" : "a fazer"}
+              </button>
             </div>
           </li>
         );
@@ -70,22 +53,117 @@ class App extends Component {
     )
   }
 
+  handleSubmit = (event) => {
+    const { title, description, category, color } = this.state;
+    event.preventDefault();
+
+    if (typeof(this.state.edit) == 'number') {
+      const { tasks } = this.state;
+
+      tasks[this.state.edit] = {
+        title: title,
+        description: description,
+        category: category,
+        color: color,
+      }
+
+      this.setState({
+        tasks,
+        title: '',
+        description: '',
+        category: '',
+        color: '#800000',
+        edit: undefined,
+      })
+
+    } else {
+      const task = {
+        title: title,
+        description: description,
+        category: category,
+        color: color,
+      }
+  
+      this.setState({
+        title: '',
+        description: '',
+        category: '',
+        color: '#800000',
+        tasks: [
+          ...this.state.tasks,
+          task
+        ],
+      });
+    }
+  }
+
+  handleEdit = (task, index) => {
+    this.setState({
+      title: task.title,
+      description: task.description,
+      category: task.category,
+      color: task.color,
+      edit: index,
+    })
+  }
+
+  handleCheck = (index) => {
+    const { tasks } = this.state;
+    // const task = this.state.tasks[index];
+    console.log(this.state.tasks);
+
+    // tasks[index] = {
+    //   ...task,
+    //   check: !this.state.check
+    // }
+
+    // this.setState({
+    //   tasks,
+    // });
+  }
+
+  deleteTask = (task) => {
+    this.setState({
+      tasks: this.state.tasks.filter((item) => item !== task)
+    })
+  }
+
   render() {
     return (
       <div className='container'>
-        <div className='header'>
-          <h1>ToDo List</h1>
-          <div className='box'>
-            <input
-              className='task-input'
-              type="text"
-              value={this.state.value}
-              onKeyUp={this.handleKeyUp}
-              onChange={this.handleChange} />
-            <button className='addButton' onClick={() => this.addTodo(this.state.value)}>Submit</button>
-          </div>
-        </div>
-        <ul className='todo-list'>
+        <h1>ToDo List</h1>
+        <form className='box'>
+          <label>Adicione uma nova tarefa:</label>
+          <input
+            type='text'
+            name='title'
+            value={this.state.title}
+            onChange={this.handleChange}
+          />
+          <label>Descrição</label>
+          <input
+            type='text'
+            name='description'
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
+          <label>Categoria</label>
+          <input
+            type='text'
+            name='category'
+            value={this.state.category}
+            onChange={this.handleChange}
+          />
+          <label>Color</label>
+          <input
+            type='color'
+            name='color'
+            value={this.state.color}
+            onChange={this.handleChange}
+          />
+          <button onClick={this.handleSubmit}>Save</button>
+        </form>
+        <ul>
           {this.renderMap()}
         </ul>
       </div>
