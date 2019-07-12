@@ -24,7 +24,6 @@ function changeType(type) {
 function startPomodoro() {
   if (!running) {
     running = true;
-    container.classList.add('running');
     rendering = setInterval(function() {
       startRendering(cronometro.value)
     }, 1000);
@@ -32,7 +31,6 @@ function startPomodoro() {
 }
 
 function startRendering() {
-  container.classList.add('running');
   if (currentTime > 0) {
     currentTime = currentTime - 1;
     cronometro.value = formatTime();
@@ -57,11 +55,10 @@ function formatTime() {
   let minutes = Math.floor(currentTime % 3600 / 60);
   let seconds = Math.floor(currentTime % 3600 % 60);
 
-  return (minutes < 10 ? "0" : "") + minutes + ':' + (seconds < 10 ? "0" : "") + seconds
+  return (minutes < 10 ? "0" : "") + minutes + ':' + (seconds < 10 ? "0" : "") + seconds;
 }
 
 function pausePomodoro() {
-  running = false
-  container.classList.remove('running');
-  clearInterval(rendering)
+  running = false;
+  clearInterval(rendering);
 }
