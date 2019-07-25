@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Banco de séries</title>
+  <link rel='stylesheet' type='text/css' href='styles.css'>
+</head>
+<body>
+	<section id='container'>
+		<label>Adicione uma série:</label>
+		<form class='box'>
+			<label>Título</label>
+			<input name='title' type='text'>
+			<label>Descrição</label>
+			<input name='description' type='text'>
+			<label>Gênero</label>
+			<input name='category' type='text'>
+
+			<label class="title-temp">Temporadas</label>
+			<input class='inputTemp' name='temp' type='text'>
+			
+			<button id='buttonAddTemp' onClick='showAddTemp()'>Add uma temporada</button>
+			
+		</form>
+		<button class='save-btn' onClick='addSerie()' type='submit'>Save</button>
+	</section>
+
+	<script src='scripts.js'></script>
+</body>
+</html>
