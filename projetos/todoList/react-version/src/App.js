@@ -43,9 +43,9 @@ class App extends Component {
                 </div>
               )}
               
-              <button onClick={() => this.handleCheck(index)}>
-                {task.check ? "concluído" : "a fazer"}
-              </button>
+              {/* <button onClick={() => this.handleCheck(index)}>
+                {this.state.check ? "feita!" : "a fazer"}
+              </button> */}
             </div>
           </li>
         );
@@ -109,17 +109,18 @@ class App extends Component {
 
   handleCheck = (index) => {
     const { tasks } = this.state;
-    // const task = this.state.tasks[index];
-    console.log(this.state.tasks);
+    const task = this.state.tasks[index];
 
-    // tasks[index] = {
-    //   ...task,
-    //   check: !this.state.check
-    // }
-
+    tasks[index] = {
+      ...task,
+      check: !this.state.check,
+    }
+    console.log(tasks[index]);
     // this.setState({
     //   tasks,
     // });
+    
+
   }
 
   deleteTask = (task) => {
