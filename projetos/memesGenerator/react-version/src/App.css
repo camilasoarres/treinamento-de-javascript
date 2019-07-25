@@ -4,8 +4,10 @@ body {
 	justify-content: center;
   align-items: center;
   height: 90vh;
-	background: #000;
-	color: #FAFAFA;
+  margin-top: 2rem;
+  font: 500 1.5rem arial;
+	background: #FFF5EE;
+  color: #DAA520;
 }
 
 .App {
@@ -21,10 +23,10 @@ img {
 
 button {
   margin-top: 2rem;
-  padding: .5rem;
-  border: none;
-  border-radius: 4px;
-  background: #FAFAFA;
-  outline: none;
-  cursor: pointer;
+  padding: .5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	background: tomato;
+	color: #fff;
+	outline: none;
 }

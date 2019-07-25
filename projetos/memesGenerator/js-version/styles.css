@@ -3,14 +3,24 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: pink;
-	color: #FAFAFA;
+	background: #FFF5EE;
+	color: #DAA520;
+	font: 500 1.8rem arial;
 }
 
 a {
 	margin-top: 1rem;
 	font: 500 1.2rem monospace;
-	color: purple;
+	color: tomato;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+button {
+	padding: .5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	background: tomato;
+	color: #fff;
+	outline: none;
 }
